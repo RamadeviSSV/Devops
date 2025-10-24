@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenkins Integration Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #status { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Trigger Jenkins Build</h1>
+  <button id="triggerBuild">Run Jenkins Job</button>
+  <div id="status"></div>
+
+  <script>
+    const jenkinsUrl = "https://your-jenkins-server.com/job/YOUR_JOB_NAME/build";
+    const jenkinsToken = "YOUR_JENKINS_API_TOKEN"; // usually from Jenkins user settings
+
+    document.getElementById("triggerBuild").addEventListener("click", async () => {
+      document.getElementById("status").innerText = "Triggering build...";
+      try {
+        const response = await fetch(jenkinsUrl + `?token=${jenkinsToken}`, {
+          method: "POST",
+          headers: {
+            "Authorization": "Basic " + btoa("YOUR_JENKINS_USER:YOUR_API_TOKEN")
+          }
+        });
+        if (response.ok) {
+          document.getElementById("status").innerText = "✅ Build triggered successfully!";
+        } else {
+          document.getElementById("status").innerText = "❌ Failed to trigger build.";
+        }
+      } catch (err) {
+        document.getElementById("status").innerText = "⚠️ Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
