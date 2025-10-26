@@ -1,9 +1,32 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>My Jenkins Site</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>My Jenkins Site</title>
+  <style>
+    body {
+      background-color: #f0f8ff; /* light blue background */
+      color: #333333;            /* dark gray text */
+      font-family: Arial, sans-serif;
+      text-align: center;        /* center all text */
+      padding: 50px;
+    }
+    h1 {
+      color: #2a52be;            /* steel blue for header */
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      font-size: 1.2em;
+      color: #555555;
+    }
+  </style>
+</head>
 <body>
   <h1>Hello — deployed via Jenkins!</h1>
   <p>Deployed at: <span id="time"></span></p>
-  <script>document.getElementById('time').innerText = new Date().toLocaleString();</script>
+  <script>
+    document.getElementById('time').innerText = new Date().toLocaleString();
+  </script>
 </body>
 </html>
