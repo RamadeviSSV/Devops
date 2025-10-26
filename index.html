@@ -25,9 +25,18 @@
 <body>
   <h1>WELCOME</h1>
   <h2>Hello &#128075; — This is my HTML page!</h2>
-  <p>Deployed at: <span id="time"></span></p>
-  <script>
-    document.getElementById('time').innerText = new Date().toLocaleString();
-  </script>
+ <p>Deployed at: <span id="time"></span></p>
+<script>
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,   // this forces AM/PM format
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric'
+  };
+  document.getElementById('time').innerText = new Date().toLocaleString(undefined, options);
+</script>
 </body>
 </html>
